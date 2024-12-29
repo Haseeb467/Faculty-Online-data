@@ -1,0 +1,72 @@
+ [
+  {
+    "name": "John Doe",
+    "gender": "male",
+    "age": 35,
+    "cnic": "35202-1234567-1",
+    "department": "Computer Science",
+    "dateOfJoining": "2015-08-12",
+    "latestAcademicDegree": "PhD in Computer Science",
+    "expertise": ["Software Engineering", "Data Structures", "Machine Learning"],
+    "email": "johndoe@university.edu",
+    "password": "hashedPassword123",
+    "contactNo": "0301-2345678",
+    "landlineNo": "042-1234567"
+  },
+  {
+    "name": "Jane Smith",
+    "gender": "female",
+    "age": 40,
+    "cnic": "35202-2345678-2",
+    "department": "Mathematics",
+    "dateOfJoining": "2012-05-20",
+    "latestAcademicDegree": "MSc in Mathematics",
+    "expertise": ["Calculus", "Algebra", "Statistics"],
+    "email": "janesmith@university.edu",
+    "password": "hashedPassword456",
+    "contactNo": "0302-3456789",
+    "landlineNo": "042-2345678"
+  },
+  {
+    "name": "Ahmed Khan",
+    "gender": "male",
+    "age": 45,
+    "cnic": "35202-3456789-3",
+    "department": "Physics",
+    "dateOfJoining": "2010-09-15",
+    "latestAcademicDegree": "PhD in Physics",
+    "expertise": ["Quantum Mechanics", "Thermodynamics", "Optics"],
+    "email": "ahmedkhan@university.edu",
+    "password": "hashedPassword789",
+    "contactNo": "0303-4567890",
+    "landlineNo": "042-3456789"
+  },
+  {
+    "name": "Fatima Ali",
+    "gender": "female",
+    "age": 30,
+    "cnic": "35202-4567890-4",
+    "department": "Chemistry",
+    "dateOfJoining": "2018-01-10",
+    "latestAcademicDegree": "MPhil in Chemistry",
+    "expertise": ["Organic Chemistry", "Physical Chemistry", "Analytical Chemistry"],
+    "email": "fatimaali@university.edu",
+    "password": "hashedPassword101",
+    "contactNo": "0304-5678901",
+    "landlineNo": "042-4567890"
+  },
+  {
+    "name": "Ali Raza",
+    "gender": "male",
+    "age": 38,
+    "cnic": "35202-5678901-5",
+    "department": "Biology",
+    "dateOfJoining": "2014-11-05",
+    "latestAcademicDegree": "PhD in Biology",
+    "expertise": ["Molecular Biology", "Genetics", "Ecology"],
+    "email": "aliraza@university.edu",
+    "password": "hashedPassword202",
+    "contactNo": "0305-6789012",
+    "landlineNo": "042-5678901"
+  }
+]

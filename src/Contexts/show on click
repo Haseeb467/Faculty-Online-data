@@ -1,0 +1,174 @@
+// import { useState } from 'react';
+
+// const SideBar = () => {
+//     const [activeItem, setActiveItem] = useState("Add Teacher");
+
+//     const menuItems = ["Add Teacher", "Edit Teacher", "Delete Teacher"];
+
+//     return (
+//         <div style={{ display: "flex" }}>
+//             <div style={{ width: "200px", backgroundColor: "#6bb5ff", padding: "20px" }}>
+//                 <h2>Menu Bar</h2>
+//                 {menuItems.map((item) => (
+//                     <div
+//                         key={item}
+//                         className={`menu-item ${activeItem === item ? "active" : ""}`}
+//                         onClick={() => setActiveItem(item)}
+//                     >
+//                         {item}
+//                     </div>
+//                 ))}
+//             </div>
+//             <div style={{ marginLeft: "20px", padding: "20px", width: "100%" }}>
+//                 {/* Display content based on active item */}
+//                 {activeItem === "Add Teacher" && <h3>Add Teacher Form</h3>}
+//                 {activeItem === "Edit Teacher" && <h3>Edit Teacher Form</h3>}
+//                 {activeItem === "Delete Teacher" && <h3>Delete Teacher Form</h3>}
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default SideBar;
+
+
+
+
+
+
+
+
+
+// // import { useState } from "react"
+
+// const SideBar = () => {
+
+//     const {activeItem, setActiveItem} = useActiveItem();
+//     const menuItems = ["Add Teacher", "Edit Teacher", "Delete Teacher"]
+
+
+
+//     return (
+//         <div className="h-screen bg-blue-400 w-60 text-white p-4">
+//             <div>
+//                 <h1 className="font-bold text-3xl">
+//                     Menu Bar
+//                 </h1>
+
+//             </div>
+//             <div className="link ">
+//                 <nav className="mt-8">
+//                     <ul className="space-y-4">
+//                         {menuItems.map((item) => (
+//                             <div
+//                                 key={item}
+//                                 className={cursor-pointer py-1  px-3 rounded hover:text-black hover:bg-gray-100 ${activeItem === item ? "text-black border-l-4 border-black bg-gray-200" : "text-white"} }
+//                                 // style={
+//                                 //     activeItem === item
+//                                 //         ? { color: 'black', borderLeft: '4px solid black' }
+//                                 //         : { color: 'white' }
+//                                 // }
+//                                 onClick={() => {
+//                                     setActiveItem(item);
+//                                     // Additional inline styles could be applied here if necessary
+//                                 }}
+//                             >
+//                                 {item}
+//                             </div>
+//                         ))}
+//                     </ul>
+//                 </nav>
+//             </div>
+//         </div>
+
+//     )
+// }
+
+// export default SideBar
+// )
+// ChatGPT said:
+// ChatGPT
+// To navigate to different pages based on the menu item clicked (e.g., "Add Teacher," "Edit Teacher," "Delete Teacher"), you can use Next.js's useRouter hook. This will allow you to programmatically navigate to a different page when setActiveItem(item) is called.
+
+// Here’s how you can update your SideBar component to use useRouter for navigation:
+
+// Import useRouter from Next.js.
+// Add routes corresponding to each menu item.
+// Navigate to the respective route when a menu item is clicked.
+// Updated SideBar Component
+// Here's how you could set it up:
+
+// typescript
+// Copy code
+// import { useActiveItem } from "@/Contexts/ActiveItemsContext";
+// import { useRouter } from "next/router"; // Import useRouter
+
+// const SideBar = () => {
+//   const { activeItem, setActiveItem } = useActiveItem();
+//   const router = useRouter(); // Initialize router
+//   const menuItems = ["Add Teacher", "Edit Teacher", "Delete Teacher"];
+
+//   // Define routes for each menu item
+//   const handleNavigation = (item: string) => {
+//     setActiveItem(item); // Update the active item in context
+//     switch (item) {
+//       case "Add Teacher":
+//         router.push("/add-teacher"); // Navigate to Add Teacher page
+//         break;
+//       case "Edit Teacher":
+//         router.push("/edit-teacher"); // Navigate to Edit Teacher page
+//         break;
+//       case "Delete Teacher":
+//         router.push("/delete-teacher"); // Navigate to Delete Teacher page
+//         break;
+//       default:
+//         break;
+//     }
+//   };
+
+//   return (
+//     <div className="h-screen bg-blue-400 w-60 text-white p-4">
+//       <div>
+//         <h1 className="font-bold text-3xl">Menu Bar</h1>
+//       </div>
+//       <div className="link">
+//         <nav className="mt-8">
+//           <ul className="space-y-4">
+//             {menuItems.map((item) => (
+//               <div
+//                 key={item}
+//                 className={`cursor-pointer py-1 px-3 rounded hover:text-black hover:bg-gray-100 ${
+//                   activeItem === item
+//                     ? "text-black border-l-4 border-black bg-gray-200"
+//                     : "text-white"
+//                 }`}
+//                 onClick={() => handleNavigation(item)} // Use handleNavigation function
+//               >
+//                 {item}
+//               </div>
+//             ))}
+//           </ul>
+//         </nav>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SideBar;
+// Explanation
+// handleNavigation function: This function takes item as a parameter, sets it as the active item, and then uses router.push() to navigate to the corresponding route.
+// Routes: You should create pages in your pages directory (/pages/add-teacher.tsx, /pages/edit-teacher.tsx, /pages/delete-teacher.tsx) for each of these paths.
+// Now, when you click on a menu item, it will set it as the active item and navigate to the appropriate page. Let me know if you have any questions!
+
+
+
+
+
+
+
+
+
+
+
+
+

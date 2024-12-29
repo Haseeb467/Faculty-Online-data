@@ -1,0 +1,109 @@
+// ... existing imports ...
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { useState } from 'react';
+
+// ... TeacherData interface stays the same ...
+
+const MainPageItems = () => {
+    const [gdata, setGdata] = useState<TeacherData[]>([]);
+    const [editingTeacher, setEditingTeacher] = useState<TeacherData | null>(null);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+    // ... existing getData function ...
+
+    const handleEdit = async (updatedData: TeacherData) => {
+        try {
+            const teacherRef = doc(txtDB, "teacherdatafromadmin", updatedData.id);
+            await updateDoc(teacherRef, updatedData);
+            
+            // Update local state
+            setGdata(prevData => 
+                prevData.map(teacher => 
+                    teacher.id === updatedData.id ? updatedData : teacher
+                )
+            );
+            setIsEditModalOpen(false);
+            setEditingTeacher(null);
+        } catch (error) {
+            console.error("Error updating teacher:", error);
+        }
+    };
+
+    return (
+        <div className="w-full h-full mt-4 flex flex-wrap gap-6 p-3 ">
+            {gdata.map((teacherData, index) => (
+                <div key={index} className="flex flex-col max-w-[320px] px-4 py-5 border border-2 border-orange-500 rounded-md h-[320px]">
+                    {/* ... existing teacher data display ... */}
+                    <div className="flex justify-around items-center mt-auto">
+                        <button 
+                            className="bg-orange-500 text-white px-4 py-2 rounded-md"
+                            onClick={() => {
+                                setEditingTeacher(teacherData);
+                                setIsEditModalOpen(true);
+                            }}
+                        >
+                            Edit
+                        </button>
+                        {/* ... delete button ... */}
+                    </div>
+                </div>
+            ))}
+
+            {/* Edit Modal */}
+            {isEditModalOpen && editingTeacher && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white p-6 rounded-lg w-96">
+                        <h2 className="text-xl mb-4">Edit Teacher</h2>
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            const formData = new FormData(e.currentTarget);
+                            const updatedTeacher = {
+                                ...editingTeacher,
+                                name: formData.get('name') as string,
+                                gender: formData.get('gender') as string,
+                                cnic: formData.get('cnic') as string,
+                                department: formData.get('department') as string,
+                                latestAcademicDegree: formData.get('latestAcademicDegree') as string,
+                                email: formData.get('email') as string,
+                                contactNo: formData.get('contactNo') as string,
+                                landlineNo: formData.get('landlineNo') as string,
+                            };
+                            handleEdit(updatedTeacher);
+                        }}>
+                            <input name="name" defaultValue={editingTeacher.name} className="border p-2 mb-2 w-full" />
+                            <input name="gender" defaultValue={editingTeacher.gender} className="border p-2 mb-2 w-full" />
+                            <input name="cnic" defaultValue={editingTeacher.cnic} className="border p-2 mb-2 w-full" />
+                            <input name="department" defaultValue={editingTeacher.department} className="border p-2 mb-2 w-full" />
+                            <input name="latestAcademicDegree" defaultValue={editingTeacher.latestAcademicDegree} className="border p-2 mb-2 w-full" />
+                            <input name="email" defaultValue={editingTeacher.email} className="border p-2 mb-2 w-full" />
+                            <input name="contactNo" defaultValue={editingTeacher.contactNo} className="border p-2 mb-2 w-full" />
+                            <input name="landlineNo" defaultValue={editingTeacher.landlineNo} className="border p-2 mb-2 w-full" />
+                            
+                            <div className="flex justify-end gap-2 mt-4">
+                                <button type="button" onClick={() => setIsEditModalOpen(false)} className="bg-gray-500 text-white px-4 py-2 rounded-md">
+                                    Cancel
+                                </button>
+                                <button type="submit" className="bg-orange-500 text-white px-4 py-2 rounded-md">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+
+
+
+
+
+// In your teacher card component
+<button 
+    className="bg-orange-500 text-white px-4 py-2 rounded-md"
+    onClick={() => router.push(`/admin/editTeacher?id=${teacherData.id}`)}
+>
+    Edit
+</button>
