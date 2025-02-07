@@ -4,7 +4,7 @@ import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD7sC13osQQuH8FW6NbAOxiqcHPACF2Vng",
+    apiKey: "AIzaSyD7sC13osQQuH8FW6NbAOxiqcHPACF2Vng",
   authDomain: "fms-4-ts.firebaseapp.com",
   databaseURL: "https://fms-4-ts-default-rtdb.firebaseio.com",
   projectId: "fms-4-ts",
