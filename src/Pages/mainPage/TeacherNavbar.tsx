@@ -131,7 +131,7 @@ const TeacherNavbar = () => {
                     {/* Logout Button */}
                     <button
                         onClick={handleLogOut}
-                        className="text-red-500 text-sm font-medium"
+                        className="text-red-500 text-sm font-medium bg-red-500 hover:bg-red-600 py-3 px-3 rounded-lg text-white"
                     >
                         Logout
                     </button>
